@@ -51,7 +51,7 @@ function snakeInitialize() {
 
 function snakeDraw() {
     for(var index = 0; index < snake.length; index++) {
-        context.fillStyle = "white";
+        context.fillStyle = "black";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
@@ -73,9 +73,18 @@ function foodInitialize() {
         x: 0,
         y:0
     };
+    setFoodPosition();
 }
 
 function foodDraw() {
-    context.fillStyle = "white";
+    context.fillStyle = "black";
     context.fillRect(food.x, food.y, snakeSize,snakeSize);
+}
+
+function setFoodPosition() {
+    var randomX = Math.floor(Math.random () * screenWidth);
+    var randomY = Math.floor(Math.random () * screenHeight);
+    
+    food.x = randomX;
+    food.y = randomY;
 }
