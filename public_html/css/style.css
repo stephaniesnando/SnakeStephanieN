@@ -6,3 +6,26 @@ body {
 #game-screen {
     display: block;
 }
+
+#gameOver {
+    position: absolute;
+    visibility: hidden;
+}
+
+h1, h3 {
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.title {
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+#restartButton {
+    margin: 1px solid black;
+    border-radius: 10px;
+}
+
+#restartButton:hover {
+    
+}
