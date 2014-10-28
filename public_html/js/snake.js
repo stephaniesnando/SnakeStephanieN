@@ -13,6 +13,7 @@ var screenHeight;
 
 var gameState;
 var gameOverMenu;
+var restartButton;
 
 /* Executing Game Code -----*/
 
@@ -38,6 +39,9 @@ function gameInitialize() {
   gameOverMenu = document.getElementById("gameOver");
   centerMenuPosition(gameOverMenu);
   
+  restartButton = document.getElementById("restartButton");
+  restartButton.addEventListener("click", gameRestart);
+  
   setState("PLAY");
   }
   
@@ -52,8 +56,17 @@ function gameLoop() {
 
 function gameDraw() {
     context.fillStyle = "rgb(181, 175, 240)";
-    context.fillRect(0, 0, screenWidth, screenHeight);    
+    context.fillRect(0, 0, screenWidth, screenHeight);   
 }
+
+function gameRestart() {
+    snakeInitialize();
+    foodInitialize();
+    hideMenu(gameOverMenu);
+    setState("PLAY");
+}
+
+/*---- Snake Functions -----*/
 
 function snakeInitialize() {
     snake = [];
@@ -79,7 +92,7 @@ function snakeDraw() {
 function snakeUpdate() {
     var snakeHeadX = snake[0].x;
     var snakeHeadY = snake[0].y;
-    
+   
     if(snakeDirection == "down") {
         snakeHeadY++;
     }
@@ -95,6 +108,7 @@ function snakeUpdate() {
     
     checkFoodCollisions(snakeHeadX, snakeHeadY);
     checkWallCollisions(snakeHeadX, snakeHeadY);
+    checkSnakeCollisions(snakeHeadX, snakeHeadY);
     
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -163,7 +177,16 @@ function checkWallCollisions(snakeHeadX, snakeHeadY) {
         console.log("Wall Collision");
         setState("GAME OVER");
     }
+    }  
+function checkSnakeCollisions(snakeHeadX, snakeHeadY) {
+    for(var index = 1; index < snake.length; index++) {
+        if(snakeHeadX == snake[index].x && snakeHeadY == snake[index].y) {
+            setState("GAME OVER");
+                return;
+        }
+    }
 }
+
 
 /*----- Game State Handling -----*/
 
@@ -176,6 +199,10 @@ function setState(state) {
 
 function displayMenu(menu) {
     menu.style.visibility = "visible";
+}
+
+function hideMenu(menu) {
+    menu.style.visibility = "hidden";
 }
 
 function showMenu(state) {
