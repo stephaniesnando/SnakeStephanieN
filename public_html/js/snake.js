@@ -14,6 +14,7 @@ var screenHeight;
 var gameState;
 var gameOverMenu;
 var restartButton;
+var playHUD;
 
 /* Executing Game Code -----*/
 
@@ -41,6 +42,8 @@ function gameInitialize() {
   
   restartButton = document.getElementById("restartButton");
   restartButton.addEventListener("click", gameRestart);
+  
+  playHUD = document.getElementById("playHUD");
   
   setState("PLAY");
   }
