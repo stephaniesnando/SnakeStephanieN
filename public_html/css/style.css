@@ -31,3 +31,7 @@ h1, h2, h3 {
 #restartButton:hover {
     background-color: lightgrey;
 }
+
+#scoreboard {
+    margin: 0px;
+}
