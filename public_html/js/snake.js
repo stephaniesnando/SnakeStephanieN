@@ -1,4 +1,4 @@
-/*-- Variables --*/
+ /*-- Variables --*/
 
 var snake;
 var snakeLength;
@@ -21,7 +21,7 @@ var playHUD;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000/30);
+setInterval(gameLoop, 1100/30);
 
 /*-------- Game functions ---------*/
 
@@ -76,7 +76,7 @@ function gameRestart() {
 function snakeInitialize() {
     snake = [];
     snakeLength = 1;
-    snakeSize = 20;
+    snakeSize = 25;
     snakeDirection = "down";
     
     for(var index = snakeLength - 1; index >= 0; index--) {
@@ -89,7 +89,7 @@ function snakeInitialize() {
 
 function snakeDraw() {
     for(var index = 0; index < snake.length; index++) {
-        context.fillStyle = "black";
+        context.fillStyle = "pink";
         context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize, snakeSize, snakeSize);
     }
 }
@@ -132,7 +132,7 @@ function foodInitialize() {
 }
 
 function foodDraw() {
-    context.fillStyle = "black";
+    context.fillStyle = "white";
     context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize,snakeSize);
 }
 
@@ -231,5 +231,5 @@ function centerMenuPosition(menu) {
 }
 
 function drawScoreboard() {
-    scoreboard.innerHTML = "Length: " + snakeLength;
+    scoreboard.innerHTML = "Score: " + snakeLength;
 }

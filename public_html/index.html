@@ -22,6 +22,23 @@ and open the template in the editor.
         </section>
         <canvas id="game-screen"></canvas>
         
+        <canvas id="myCanvas" width="578" height="200"></canvas>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      var imageObj = new Image();
+      imageObj.onload = function() {
+        var pattern = context.createPattern(imageObj, 'repeat');
+
+        context.rect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = pattern;
+        context.fill();
+      };
+      imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/wood-pattern.png';
+    </script>
+  </body>
+        
         <script src="js/snake.js"></script>
     </body> 
 </html>
